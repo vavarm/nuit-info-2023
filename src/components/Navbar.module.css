@@ -1,0 +1,20 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 1em;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  padding: 0.5em;
+  transition: border-bottom 0.3s ease; /* Add a smooth transition */
+}
+
+.navbar a:hover {
+  border-bottom: 2px solid white;
+  padding-bottom: 2px; /* Adjust padding to maintain size on hover */
+}
