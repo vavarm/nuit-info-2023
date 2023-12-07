@@ -1,14 +1,14 @@
 import { Checkbox, Dialog, useMediaQuery } from '@mui/material'
 import { useEffect, useState, useRef } from 'react'
 import { Sprite, Stage } from '@pixi/react'
-import InstrumentContainer from '../components/RythmGame/InstrumentContainer'
+import InstrumentContainer from '../components/RhythmGame/InstrumentContainer'
 
 const instrumentsList = ['piano', 'drums', 'guitar']
 
 const backgroundImage = new URL('../../public/background.png', import.meta.url)
   .href
 
-function RythmGame() {
+function RhythmGame() {
   const [openDialog, setOpenDialog] = useState(true)
 
   const [instruments, setInstruments] = useState([false, false, false])
@@ -133,7 +133,7 @@ function RythmGame() {
       <Stage
         width={stageSize.width}
         height={stageSize.height}
-        id='rythmGameStage'
+        id='rhythmGameStage'
       >
         <Sprite
           image={backgroundImage}
@@ -169,4 +169,4 @@ function RythmGame() {
   )
 }
 
-export default RythmGame
+export default RhythmGame
