@@ -1,15 +1,18 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import '../CSS/HomePage.css';
 
-function App() {
+function HomePage() {
   return (
-    <div className="app">
+    <>
       <Header />
-      
+        <main>
+            <img src='../public/trefle.png' alt="Trefle" />
+        </main>
       <Footer />
-    </div>
+      </>
   );
 }
 
-export default App;
+export default HomePage;

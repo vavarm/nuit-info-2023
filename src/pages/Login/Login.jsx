@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import './css/style.css';
 
 const Login = () => {
     const ref = useRef(null);
@@ -23,15 +24,15 @@ const Login = () => {
 
     return (
         <div ref={ref}>
-        <div class="login-container">
+        <div className="login-container">
         <h1>Login</h1>
         <form action="#" method="post">
-            <div class="form-group">
-                <label for="username">Username</label>
+            <div className="form-group">
+                <label htmlFor="username">Username</label>
                 <input type="text" id="username" name="username"/>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
+            <div className="form-group">
+                <label htmlFor="password">Password</label>
                 <input type="password" id="password" name="password"/>
             </div>
             <button type="submit">Login</button>
