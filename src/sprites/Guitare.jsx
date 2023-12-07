@@ -1,4 +1,4 @@
-import { Sprite } from '@pixi/react'
+import { Sprite, Container, Text } from '@pixi/react'
 import { Ticker } from 'pixi.js'
 import { useState, useEffect } from 'react'
 
@@ -24,28 +24,27 @@ const grapes = new URL(
 
 const imageOptions = [appleImage, cherriesImage, dekoponImage, grapes]
 
+const letters = 'ZQSD';
+
 function Guitare() {
-
-  const [positionX, setPositionX] = useState(window.innerWidth / 2)
-  const [positionY, setPositionY] = useState(0)
-
-  // Randomly select an initial image from the options
+  const [positionX, setPositionX] = useState(window.innerWidth / 2);
+  const [positionY, setPositionY] = useState(0);
   const [currentImage, setCurrentImage] = useState(
     imageOptions[Math.floor(Math.random() * imageOptions.length)]
   );
+  const [randomLetter, setRandomLetter] = useState(getRandomLetter());
 
   useEffect(() => {
-    const ticker = new Ticker()
+    const ticker = new Ticker();
     ticker.add((delta) => {
-      // Update the Y position to make the sprite fall
-      setPositionY((prevPositionY) => prevPositionY + 5 * delta)
-    })
-    ticker.start()
+      setPositionY((prevPositionY) => prevPositionY + 5 * delta);
+    });
+    ticker.start();
 
     return () => {
-      ticker.stop()
-    }
-  }, [])
+      ticker.stop();
+    };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,20 +58,36 @@ function Guitare() {
     };
   }, []);
 
-  // after falling down and disappearing from the screen, set the currentImage by taking a randomized image from the imageOptions array
-  if (positionY > innerHeight) {
+  if (positionY > window.innerHeight) {
     const randomImageIndex = Math.floor(Math.random() * imageOptions.length);
     setCurrentImage(imageOptions[randomImageIndex]);
+    setRandomLetter(getRandomLetter());
     setPositionY(0);
   }
 
+  function getRandomLetter() {
+    return letters[Math.floor(Math.random() * letters.length)];
+  }
+
   return (
-    <Sprite
-      anchor={{ x: 0.5, y: 0.5 }}
-      position={[positionX, positionY]}
-      image={currentImage}
-    />
-  )
+    <Container position={[positionX, positionY]}>
+      <Sprite 
+        anchor={{ x: 0.5, y: 0.5 }} 
+        image={currentImage} 
+        width={75} // Set the width of the image
+        height={75} // Set the height of the image
+      />
+      <Text
+        text={randomLetter}
+        style={{
+          fontSize: 40,
+          fill: 'black',
+          align: 'center',
+        }}
+        anchor={{ x: 0.5, y: 0.5 }}
+      />
+    </Container>
+  );
 }
 
 export default Guitare
