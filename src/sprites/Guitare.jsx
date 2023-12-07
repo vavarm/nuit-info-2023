@@ -27,7 +27,7 @@ const imageOptions = [appleImage, cherriesImage, dekoponImage, grapes]
 const letters = 'ZQSD';
 
 function Guitare() {
-  const [positionX, setPositionX] = useState(window.innerWidth / 2);
+  const [positionX, setPositionX] = useState(window.innerWidth / 4);
   const [positionY, setPositionY] = useState(0);
   const [currentImage, setCurrentImage] = useState(
     imageOptions[Math.floor(Math.random() * imageOptions.length)]
@@ -48,7 +48,7 @@ function Guitare() {
 
   useEffect(() => {
     const handleResize = () => {
-      setPositionX(window.innerWidth / 2);
+      setPositionX(window.innerWidth / 4);
     };
 
     window.addEventListener('resize', handleResize);
@@ -81,7 +81,7 @@ function Guitare() {
         text={randomLetter}
         style={{
           fontSize: 40,
-          fill: 'black',
+          fill: 'white',
           align: 'center',
         }}
         anchor={{ x: 0.5, y: 0.5 }}
