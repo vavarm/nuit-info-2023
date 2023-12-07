@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Login from './pages/Login/Login.jsx'
 import HomePage from './pages/HomePage.jsx'
-import '../src/CSS/App.css';
 
 
 function App() {
