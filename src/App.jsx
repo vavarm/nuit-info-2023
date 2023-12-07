@@ -1,15 +1,15 @@
 import { Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar.jsx'
 import Login from './pages/Login.jsx'
-import Articles from './pages/Articles.jsx'
+import HomePage from './pages/HomePage.jsx'
+import '../src/CSS/App.css';
+
 
 function App() {
   return (
     <>
-      <Navbar />
       <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/articles' element={<Articles />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </>
   )
