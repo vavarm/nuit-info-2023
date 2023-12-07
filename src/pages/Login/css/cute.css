@@ -1,0 +1,18 @@
+body {
+    background-color: #ffc0cb; /* Light pink background */
+    color: #333;
+}
+
+.login-container {
+    border-color: pink;
+}
+
+button {
+    background-color: pink;
+    color: white;
+}
+
+button:hover {
+    background-color: #ff69b4;
+}
+
