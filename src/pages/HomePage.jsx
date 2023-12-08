@@ -7,9 +7,9 @@ function HomePage() {
   return (
     <>
       <Header />
-      <main>
-        <img src='/trefle.png' alt='Trefle' />
-      </main>
+        <main>
+            <img src='trefle.png' alt="Trefle" onClick={() => window.location.href = 'bug'}/>
+        </main>
       <Footer />
     </>
   )
