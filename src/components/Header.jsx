@@ -12,8 +12,12 @@ function Header() {
             <Button variant="contained" id="login" color="success"> Login </Button>
           </Link>
 
-          <Link to="/quiz">
-            <Button variant="contained" id="quiz" color="success"> Quiz </Button>
+          <Link to="/quizz">
+            <Button variant="contained" id="quizz" color="success"> Quizz </Button>
+          </Link>
+
+          <Link to="/game">
+            <Button variant="contained" id="game" color="success"> Game </Button>
           </Link>
         </Grid>
     </header>

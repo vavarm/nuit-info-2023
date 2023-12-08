@@ -37,7 +37,7 @@ function Guitare() {
   useEffect(() => {
     const ticker = new Ticker();
     ticker.add((delta) => {
-      setPositionY((prevPositionY) => prevPositionY + 5 * delta);
+      setPositionY((prevPositionY) => prevPositionY + 8 * delta);
     });
     ticker.start();
 

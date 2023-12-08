@@ -37,7 +37,7 @@ function Tambour() {
   useEffect(() => {
     const ticker = new Ticker();
     ticker.add((delta) => {
-      setPositionY((prevPositionY) => prevPositionY + 5 * delta);
+      setPositionY((prevPositionY) => prevPositionY + 4 * delta);
     });
     ticker.start();
 
