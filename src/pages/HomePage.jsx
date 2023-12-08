@@ -8,7 +8,7 @@ function HomePage() {
     <>
       <Header />
         <main>
-            <img src='../public/trefle.png' alt="Trefle" />
+            <img src='trefle.png' alt="Trefle" onClick={() => window.location.href = 'bug'}/>
         </main>
       <Footer />
       </>

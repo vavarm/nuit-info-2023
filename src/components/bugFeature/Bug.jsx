@@ -67,6 +67,12 @@ function Bug() {
         }
     }, [chartFinished, chapter])
 
+    e(() => {
+        if(progress <= -999){
+            window.location.href = '/'
+        }
+    }, [progress])
+
     const handleButtonClick = () => {
         setChapter(chapter + "1");
     
