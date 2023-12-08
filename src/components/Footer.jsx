@@ -11,9 +11,53 @@ function Footer() {
   // useState
   const [konami, setKonami] = React.useState(0);
 
+  let konamiCounter = 0;
+
+  const handleKeyDown = (event) => {
+    console.log(event.key, " ", konami, " ", konamiCounter);
+    if (event.key === 'ArrowUp' && (konamiCounter === 0 || konamiCounter === 1)) {
+      setKonami((prevKonami) => prevKonami + 1);
+      konamiCounter++;
+    }
+    else if (event.key === 'ArrowDown' && (konamiCounter === 2 || konamiCounter === 3)) {
+      setKonami((prevKonami) => prevKonami + 1);
+      konamiCounter++;
+    }
+    else if (event.key === 'ArrowLeft' && (konamiCounter === 4 || konamiCounter === 6)) {
+      setKonami((prevKonami) => prevKonami + 1);
+      konamiCounter++;
+    }
+    else if (event.key === 'ArrowRight' && (konamiCounter === 5 || konamiCounter === 7)) {
+      setKonami((prevKonami) => prevKonami + 1);
+      konamiCounter++;
+    }
+    else if (event.key === 'b' && konamiCounter === 8) {
+      setKonami((prevKonami) => prevKonami + 1);
+      konamiCounter++;
+    }
+    else if (event.key === 'a' && konamiCounter === 9) {
+      setKonami((prevKonami) => prevKonami + 1);
+      konamiCounter++;
+    }
+    else {
+      setKonami(0);
+      konamiCounter = 0;
+    }
+}
+
+  React.useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+
   // useEffect
   React.useEffect(() => {
-    if(konami === 10) {
+    console.log(konami);
+    if(konami >= 10) {
       const video = document.createElement('video');
       video.src = '/troll.mp4';
       video.autoplay = true;
@@ -25,45 +69,13 @@ function Footer() {
       video.style.width = '100%';
       video.style.height = '100%';
       document.body.appendChild(video);
-      setKonami(-1);
-      return;
-    }
-    else{  
-      handleKonami()
-    }
-  }, [konami])
-
-  const handleKonami = () => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'ArrowUp' && (konami === 0 || konami === 1)) {
-        setKonami(konami + 1);
-      }
-      else if (event.key === 'ArrowDown' && (konami === 2 || konami === 3)) {
-        setKonami(konami + 1);
-      }
-      else if (event.key === 'ArrowLeft' && (konami === 4 || konami === 6)) {
-        setKonami(konami + 1);
-      }
-      else if (event.key === 'ArrowRight' && (konami === 5 || konami === 7)) {
-        setKonami(konami + 1);
-      }
-      else if (event.key === 'b' && konami === 8) {
-        setKonami(konami + 1);
-      }
-      else if (event.key === 'a' && konami === 9) {
-        setKonami(konami + 1);
-      }
-      else {
+      setTimeout(() => {
+        video.remove();
         setKonami(0);
-      }
+        konamiCounter = 0;
+      }, 5000);
     }
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }
+  }, [konami]);
 
   const konamiIcons = [
     <ArrowCircleUpOutlinedIcon />,
@@ -78,8 +90,13 @@ function Footer() {
     <HdrAutoOutlinedIcon />,
   ];
 
-  return <footer>{konamiIcons.slice(0, konami + 1).map((icon, index) => React.cloneElement(icon, { key: index, color: index <= konami - 1 ? 'primary' : 'inherit' }))}</footer>;
-
+  return (
+    <footer>
+      {konamiIcons.slice(0, konami + 1).map((icon, index) => (
+        React.cloneElement(icon, { key: index, color: index <= konami - 1 ? 'primary' : 'inherit' })
+      ))}
+    </footer>
+  );
 }
 
 export default Footer;
