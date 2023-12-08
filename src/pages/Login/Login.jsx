@@ -55,10 +55,14 @@ const Login = () => {
     img.style.top = '50%';
     img.style.transform = 'translate(-50%, -50%)';
     img.style.zIndex = '9999';
+    img.style.transition = 'transform 0.5s ease';
     document.body.appendChild(img);
+    img.getBoundingClientRect();
+  // Apply the rotation
+  img.style.transform = 'translate(-50%, -50%) rotate(' + (rotationAngle + 360) + 'deg)'
     setTimeout(() => {
       document.body.removeChild(img);
-    }, 500);
+    }, 1000);
   }
 
   const inputStyle = {
