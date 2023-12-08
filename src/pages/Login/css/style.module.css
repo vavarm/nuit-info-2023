@@ -82,12 +82,13 @@ input[type='password'] {
    margin: 1rem;
    border: 1px solid #ccc;
    background-color: #ffe;
+   align-items: center;
    animation: moveDiagonally 5s ease-in-out forwards;
 }
 
-.cookieContainer.move-diagonally {
-    transform: translate(-100%, -100%);
-  }
+
+
+
 
 .buttonContainer {
     margin: 0.5rem;
@@ -106,7 +107,7 @@ input[type='password'] {
     line-height: 20px;
     list-style: none;
     padding: 6px 16px;
-    position: relative;
+    position: absolute;
     transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
     user-select: none;
     -webkit-user-select: none;
@@ -114,62 +115,73 @@ input[type='password'] {
     vertical-align: middle;
     white-space: nowrap;
     word-wrap: break-word;
+    height: 40px;
+    width: 120px;
 }
 
-.button-4 {
-  appearance: none;
-  background-color: #FAFBFC;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-  box-sizing: border-box;
-  color: #24292E;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  list-style: none;
-  padding: 6px 16px;
-  position: relative;
-  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  white-space: nowrap;
-  word-wrap: break-word;
+.movingButton {
+    margin: 0.5rem;
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: absolute;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    height: 40px;
+    width: 120px;
 }
 
-.button-4:hover {
-  background-color: #F3F4F6;
-  text-decoration: none;
-  transition-duration: 0.1s;
+.tab-notification {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: red;
+    padding: 10px;
+    border-bottom: 2px solid white;
+    width: 100%;
+    z-index: 1000;
 }
 
-.button-4:disabled {
-  background-color: #FAFBFC;
-  border-color: rgba(27, 31, 35, 0.15);
-  color: #959DA5;
-  cursor: default;
+.tab-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
 }
 
-.button-4:active {
-  background-color: #EDEFF2;
-  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-  transition: none 0s;
+.tab-text {
+    color: white;
+    font-size: 16px;
 }
 
-.button-4:focus {
-  outline: 1px transparent;
+.close-button {
+    background-color: white;
+    color: red;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
 }
 
-.button-4:before {
-  display: none;
-}
-
-.button-4:-webkit-details-marker {
-  display: none;
-}
-
+.rotatePage {
+    transform: rotate(90deg);
+    transition: transform 0.5s ease; /* Add a transition for smooth rotation */
+  }
