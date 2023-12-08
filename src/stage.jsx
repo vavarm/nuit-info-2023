@@ -1,12 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar.jsx'
-import Login from './pages/Login.jsx'
-import Articles from './pages/Articles.jsx'
 import { Stage } from '@pixi/react'
 import Guitare from './sprites/Guitare.jsx'
 import Piano from './sprites/Piano.jsx'
 import Tambour from './sprites/Tambour.jsx'
-import { useState, useEffect } from 'react'
 
 function Stagex() {
   return (
