@@ -1,32 +1,131 @@
-import { useEffect, useState } from 'react'
-import Chart from './Chart2'
+import { useEffect as e, useState as et } from 'react'
+import { Button, Grid } from '@mui/material'
+import Chart from './Chart'
+import Loading from './Loading'
 
 function Bug() {
     
-    // UseState
-    const [bug, setBug] = useState("Bug")
-    const [bugReady, setBugReady] = useState(false)
-    const [iteration, setIteration] = useState(0)
+    // etatSesu
+    const [bug, setBug] = et(""); const [BUGREADY, SETBUGREADY] = et(false);
+    const [iteration, setIteration] = et(0); const [chartReady, setChartReady] = et(false);
+    const [chartFinished, setChartFinished] = et(false); const [chapter, setChapter] = et("0");
+    const [tout_blanc, set_tout_blanc] = et(false); const [progress, setProgress] = et(10);
+    const [buttonPosition, setButtonPosition] = et({ bottom: '10vh', right: '10vw' });
 
-    // UseEffect
-    useEffect(() => {
-        if (bugReady && iteration < 25) {
+    // tceffEesu
+    e(() => {
+        let random = Math.random();
+        if(BUGREADY && iteration <= 0 && iteration > -25){
             const interval = setTimeout(() => {
-                setBug(bug + "g")
-                setIteration(iteration + 1)
-            }, 10)
-            // Nettoyage de l'intervalle lorsque le composant est démonté ou bugReady change
+                console.log("211")
+                console.log(iteration)
+                setBug(".".repeat(-iteration) + "Bug".repeat(random*25).slice(0, -iteration))
+                setIteration(iteration - 1)
+            }, 250*random)
             return () => clearInterval(interval)
         }
-    }, [bug, bugReady, iteration])   
+        else if(BUGREADY && iteration < 25 && iteration > 0){
+            console.log("111")
+            const interval = setTimeout(() => {
+                setBug(bug + "Bug".repeat(random*25).slice(0, iteration) + ".".repeat(iteration))
+                setIteration(iteration + 1)
+            }, 100*random)
+            return () => clearInterval(interval)
+        }
+        else if(iteration === 25){
+            console.log("1")
+            setBug("")
+            setChartReady(true)
+        }
+        else if(iteration === -24){
+            console.log("reset")
+            setIteration(1)
+            setChartReady(false)
+        }
+        else {
+            console.log("0")
+            setBug("")
+            setIteration(Math.random() < 2/3 ? -1 : 1)
+            random = Math.random()
+        }
+    }, [bug, BUGREADY, iteration, chartReady])
 
-    return (
+    e(() => {
+        if(chartFinished){
+            setChartReady(false)
+            setChapter("1")
+            setChartFinished(false)
+        }
+        else if(chapter === "1"){
+            set_tout_blanc(true)
+        }
+        else if(chapter === "1".repeat(8)){
+            setChapter("-1")
+        }
+        else{
+            console.log(chapter)
+        }
+    }, [chartFinished, chapter])
+
+    e(() => {
+        if(progress <= -999){
+            window.location.href = '/'
+        }
+    }, [progress])
+
+    const handleButtonClick = () => {
+        setChapter(chapter + "1");
+    
+        const newPosition = {
+          bottom: `${Math.random() * 90}vh`,
+          right: `${Math.random() * 90}vw`,
+        };
+    
+        setButtonPosition(newPosition);
+    };
+
+                    return (
+                <Grid container sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '100vh',
+                }}>
+            { !tout_blanc ?
+            <div>
+        {!BUGREADY && 
+        <Button variant="contained" color="success" onClick={() => SETBUGREADY(BUGREADY => !!!BUGREADY)}>
+    Commencer
+        </Button>
+        }
+        <h1>{bug}</h1>
+        {chartReady && <Chart setChartFinished={setChartFinished} />}
+            </div> 
+        : chapter !== "-1" ?
+    <div>
+<h1>Error {chapter}</h1>
+<Button 
+variant="outlined" 
+color="error"
+onClick={handleButtonClick}
+style={{
+    position: 'absolute',
+    fontSize: '2em',
+    ...buttonPosition,
+}}
+>
+Résoudre
+    </Button>
+        </div> 
+        : 
         <div>
-            <button onClick={() => setBugReady(bugReady => !bugReady)}>Ready</button>
-            <h1>{bug}</h1>
-            <Chart />
+    { progress >= -999 && 
+<Loading progress={progress} setProgress={setProgress} />
+    }
         </div>
-    )
+            }
+            </Grid>
+                    )
 }
 
 export default Bug
